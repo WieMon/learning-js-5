@@ -1,15 +1,20 @@
 const input = document.getElementById('pass');
 const div = document.querySelector('.message');
-const password = 'user';
-const message = 'goodbye'
-input.addEventListener('input', function (e) {
-  console.log(e.target.value);
-  console.log(this.value);
-  if(password === e.target.value) {
-    div.textContent = message;
-  } else {
-    div.textContent = '';
-  }
+const passwords = ['user', 'spring'];
+const messages = ['goodbye', 'season'];
+
+input.addEventListener('input', (e) => {
+  div.textContent = '';
+  const text = e.target.value;
+
+  //console.log(e.target.value);
+  //console.log(this.value);
+  passwords.forEach((password, index) => {
+    if(password === text) {
+      div.textContent = messages[index];
+      e.target.value = '';
+    }
+  })
 })
 
 input.addEventListener('focus', (e) => {
